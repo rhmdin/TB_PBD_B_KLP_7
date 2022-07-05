@@ -2,12 +2,17 @@
 
 session_start(); 
 include "/xampp/htdocs/TB_PBD_B_KLP_7/BE/connect.php";
-$Username=$_SESSION['Username'];
 $usn=$_GET['usn'];
+$Username=$_SESSION['Username'];
 $select = pg_query($connect, "SELECT * FROM tabel_daftar_user WHERE username = '$Username'");  
 $akun=pg_fetch_assoc($select);
 if($_SESSION['role']!="1"&&$_SESSION['role']!="2"&&$_SESSION['role']!="3"){
-header("location:/TB_PBD_B_KLP_7/index.php?msg=invaliduser");
+  header("location:/TB_PBD_B_KLP_7/index.php?msg=invaliduser");
+  }
+else{
+  $usn=$_GET['usn'];
+$select = pg_query($connect, "SELECT * FROM tabel_daftar_user JOIN tabel_role_user ON tabel_daftar_user.role_user = tabel_role_user.id_role WHERE tabel_daftar_user.username = '$usn' ");
+$show = pg_fetch_assoc($select);
 }
 ?>
 
@@ -125,53 +130,55 @@ header("location:/TB_PBD_B_KLP_7/index.php?msg=invaliduser");
         }
       }
     </style>
-    <title>Tambah Data Pelanggan</title>
+    <title>Edit Data User</title>
   </head>
 
   <body>
     
-    <center><p class="judul">Ganti Password</p></center>
-    <div class="containerForm" style="padding: 8%; height: 19cm">
-      <form method="post" action="/tb_pbd_b_klp_7/BE/edit_pw.php?usn=<?php echo $usn?>">
-        
+    <center><p class="judul">Edit Profil</p></center>
+    <div class="containerForm" style="padding: 8%; height: 15cm">
+      <form method="POST" action="/tb_pbd_b_klp_7/BE/edit_user.php?usn=<?php echo $usn?>">
+        <div class="row">
+          <div class="col-25">
+            <label for="fname">Username</label>
+            </div>
+          <div class="col-75">
+            <input readonly value="<?php echo $show['username'] ?>" type="text" id="username" name="username" for="username" placeholder="Your ID" />
+            <small class="notif" style="margin-left:2%">*Username tidak dapat diubah </small>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="lname">Nama</label>
+          </div>
+          <div class="col-75">
+            <input type="text" required value="<?php echo $show['nama'] ?>" id="nama" name="nama" for="nama" placeholder="Nama user" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="lname">No. HP</label>
+          </div>
+          <div class="col-75">
+            <input type="number" value="<?php echo $show['no_hp'] ?>" required min="62" id="nohp" name="nohp" for="nohp" placeholder="No hp user" />
+          </div>
+        </div>
         
         <div class="row">
           <div class="col-25">
             <label for="lname">Password</label>
           </div>
           <div class="col-75">
-            <input type="password"  required style=" width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 4px;
-    resize: vertical;
-    background: #ffebf0;" minlength="5" id="password" name="password" for="password" placeholder="password" />
+          <p class="notif" style="margin-top:2%;">Ubah password <a href="/TB_PBD_B_KLP_7/FE/gantipw.php?usn=<?php echo $usn ?>">di sini</a> </p>
+            
           </div>
-        </div> <div class="row">
-          <div class="col-25">
-            <label for="lname">Konfirmasi Password</label>
-          </div>
-          <div class="col-75">
-            <input type="password" minlength="5" required style=" width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 4px;
-    resize: vertical;
-    background: #ffebf0;" id="password" name="password1" for="password1" placeholder="konfirmasi password" />
-          <small class="notif" style="margin-left:2%;">*Harus sama dengan password </small>
-            </div>
         </div>
+        <br />
         <div class="row">
-          <input type="submit" style=" margin-top:2cm;" value="Submit" />
+          <input type="submit" value="Submit" />
         </div>
-      </form> <a <?php if ($_SESSION['role']==3 || $_SESSION['role'] == 2)
-      {?>
-      href="/TB_PBD_B_KLP_7/FE/profil_edit.php?usn=<?php echo $Username ?>"<?php ;
-      }
-      elseif($_SESSION['role']==1)
-      {?>
-        href="/TB_PBD_B_KLP_7/FE/user_edit.php?usn=<?php echo $usn ?>"<?php ;
-      } ?>  style="text-decoration: none; hover:pointer;">
+      </form>
+      <a  href="/TB_PBD_B_KLP_7/FE/index_atasan.php" style="text-decoration: none; hover:pointer;">
             <button OnClick="return confirm('Yakin mau kembali? Semua perubahan yang ada belum tersimpan!');">
               Batal
             </button>

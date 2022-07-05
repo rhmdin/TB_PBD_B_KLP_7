@@ -86,6 +86,7 @@ session_start();
             <?php echo $akun ['nama'] ?>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="margin-left: -150%;">
+            <a class="dropdown-item" href="/tb_pbd_b_klp_7/FE/profil_edit.php?usn=<?php echo $Username?>">Edit Profil</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="/tb_pbd_b_klp_7/BE/logout.php">Keluar</a>
           </div>

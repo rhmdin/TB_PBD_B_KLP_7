@@ -1,7 +1,11 @@
 <?php
 session_start(); 
     include "connect.php";
+    $Username=$_SESSION['Username'];
     $usn=$_GET['usn'];
+    $select = pg_query($connect, "SELECT * FROM tabel_daftar_user WHERE username = '$Username'");  
+$akun=pg_fetch_assoc($select);
+
     if(empty($_POST["password"]) || empty($_POST["password1"])){
 
         echo "<script> 
@@ -21,9 +25,24 @@ session_start();
             $insert =  pg_query($connect, "UPDATE tabel_daftar_user SET password='$password' WHERE username = '$usn'");
             if($insert)
             {
-                echo "<script>
-                        document.location.href='/TB_PBD_B_KLP_7/FE/user_daftar.php';
-                    </script>";
+                if($_SESSION['role']==1){
+                    echo "<script>
+                            document.location.href='/TB_PBD_B_KLP_7/FE/user_daftar.php';
+                        </script>";
+                    
+                }
+                elseif($_SESSION['role']==2){
+                    echo "<script>
+                            document.location.href='/TB_PBD_B_KLP_7/FE/index_atasan.php';
+                        </script>";
+
+                }
+                elseif($_SESSION['role']==3){
+                    echo "<script>
+                            document.location.href='/TB_PBD_B_KLP_7/FE/penjualan_daftar.php';
+                        </script>";
+                    
+                }
             }
             else
             {
