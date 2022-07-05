@@ -17,12 +17,25 @@ session_start();
                                   GROUP BY tabel_transaksi.no_invoice, nama_pelanggan, id_kasir
                                   ORDER BY tanggal,tabel_transaksi.no_invoice ASC;
                     ");
+                        $select1 = pg_query($connect, "SELECT tanggal,  tabel_transaksi.no_invoice, nama_pelanggan, id_kasir, nota_pembayaran, 
+                        sum((tabel_detail_transaksi.kuantitas_barang * tabel_barang.harga_jual) + tabel_transaksi.ongkir - tabel_detail_transaksi.diskon) as total_bayar
+                        FROM tabel_detail_transaksi, tabel_transaksi, tabel_pelanggan, tabel_barang
+                        WHERE tabel_transaksi.no_invoice = tabel_detail_transaksi.no_invoice
+                        AND tabel_transaksi.id_pelanggan = tabel_pelanggan.id_pelanggan
+                        AND tabel_detail_transaksi.id_barang = tabel_barang.id_barang
+                        GROUP BY tabel_transaksi.no_invoice, nama_pelanggan, id_kasir
+                        ORDER BY tanggal,tabel_transaksi.no_invoice ASC;
+          ");
   }
-              
-    $tottransaksi1 = pg_query($connect, "SELECT count(no_invoice) as tottransaksi FROM tabel_transaksi");  
-    $tottransaksi=pg_fetch_assoc($tottransaksi1);
-    $lbkotor1 = pg_query($connect, "SELECT sum((tabel_detail_transaksi.kuantitas_barang * tabel_barang.harga_jual) + tabel_transaksi.ongkir - tabel_detail_transaksi.diskon) as total_bayar FROM tabel_detail_transaksi, tabel_transaksi, tabel_pelanggan, tabel_barang");  
-    $lbkotor=pg_fetch_assoc( $lbkotor1);
+  
+  $lbkotor=0;
+  $tottransaksi1 = pg_query($connect, "SELECT count(no_invoice) as tottransaksi FROM tabel_transaksi");  
+  $tottransaksi=pg_fetch_assoc($tottransaksi1);
+  while ($show1 = pg_fetch_assoc($select1))
+  {
+    $lbkotor = $lbkotor + $show1['total_bayar'];
+  }
+   
 ?>
 
 <!DOCTYPE html>
@@ -76,8 +89,8 @@ session_start();
           <th>Jumlah Transaksi : </th>
           <td><?php echo $tottransaksi['tottransaksi'] ?></td>
         </tr>
-        <tr><th>Laba Kotor : </th></tr>
-          <td><?php echo $lbkotor['total_bayar'] ?></td>
+        <tr><th>Laba Kotor : </th>
+          <td><?php echo $lbkotor?></td></tr>
       </thead>
     </table>   
     <br>
