@@ -9,7 +9,7 @@ $Username=$_SESSION['Username'];
 }
   else{
     $select = pg_query($connect, "SELECT tanggal,  tabel_transaksi.no_invoice, nama_pelanggan, id_kasir, 
-                              sum((kuantitas_barang * harga_jual) +  tabel_detail_transaksi.ongkir - diskon) as total_bayar, 
+                              sum((kuantitas_barang * harga_jual) +  tabel_transaksi.ongkir - diskon) as total_bayar, 
                               diskon, nota_pembayaran
                               FROM tabel_detail_transaksi, tabel_transaksi, tabel_pelanggan, tabel_barang
                               WHERE tabel_transaksi.no_invoice = tabel_detail_transaksi.no_invoice
@@ -17,7 +17,7 @@ $Username=$_SESSION['Username'];
                               AND tabel_detail_transaksi.id_barang = tabel_barang.id_barang
                               GROUP BY tanggal,tabel_transaksi.no_invoice, nama_pelanggan, id_kasir,
                               nota_pembayaran,harga_jual,
-                              tabel_detail_transaksi.ongkir,tabel_barang.id_barang, kuantitas_barang, diskon
+                              tabel_transaksi.ongkir,tabel_barang.id_barang, kuantitas_barang, diskon
                               ORDER BY tanggal,tabel_transaksi.no_invoice ASC;
                     ");
   }
