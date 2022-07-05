@@ -175,7 +175,7 @@ else{
           <input type="submit" value="Submit" />
         </div>
       </form>
-      <a <?php if($_SESSION ['page'] == 'penjualan')
+      <a <?php if($_SESSION ['page1'] == 'penjualan')
       {
         ?> href="/TB_PBD_B_KLP_7/FE/penjualan_tambah.php"
          <?php

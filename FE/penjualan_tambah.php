@@ -59,7 +59,7 @@ else{
                   }
               ?>
               </select>
-              <small class="notif" style="margin-left:2%">*Tidak ada opsi pelanggan? tambah <a onclick="<?php $_SESSION['add_cust'] = 'penjualan' ?>" href="/TB_PBD_B_KLP_7/FE/pelanggan_tambah.php">di sini</a> </small>
+              <small class="notif" style="margin-left:2%">*Tidak ada opsi pelanggan? tambah  <a onclick="<?php $_SESSION ['page1'] = 'penjualan' ?>" href="/TB_PBD_B_KLP_7/FE/pelanggan_tambah.php">di sini</a> </small>
             </div>
         </div><div class="row">
           <div class="col-25">
@@ -79,7 +79,7 @@ else{
                   }
               ?>
               </select>
-              <small class="notif" style="margin-left:2%">*Tidak ada opsi payment method? tambah <a onclick="<?php $_SESSION['page'] = 'add_pay' ?>" href="/TB_PBD_B_KLP_7/FE/payment_tambah.php">di sini</a> </small>
+              <small class="notif" style="margin-left:2%">*Tidak ada opsi payment method? tambah <a onclick="<?php $_SESSION['page'] = 'hmmm' ?>" href="/TB_PBD_B_KLP_7/FE/payment_tambah.php">di sini</a> </small>
             </div>
         </div>
         <div class="row">
