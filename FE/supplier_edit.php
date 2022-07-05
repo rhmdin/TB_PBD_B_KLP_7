@@ -141,7 +141,7 @@ $show = pg_fetch_assoc($select);
             <label for="lname">Supplier</label>
           </div>
           <div class="col-75">
-            <input type="text" disabled readonly value="<?php echo $show['nama_supplier'] ?>" id="nama" name="nama" for="nama" placeholder="Your Phone Number." />
+            <input type="text" required disabled readonly value="<?php echo $show['nama_supplier'] ?>" id="nama" name="nama" for="nama" placeholder="Your Phone Number." />
           </div>
         </div>
         <div class="row">
@@ -149,7 +149,7 @@ $show = pg_fetch_assoc($select);
             <label for="lname">Kontak</label>
           </div>
           <div class="col-75">
-            <input type="number" value="<?php echo $show['kontak_supplier'] ?>" id="kontak" name="kontak" for="kontak" placeholder="Your Phone Number." />
+            <input type="number"  required value="<?php echo $show['kontak_supplier'] ?>" id="kontak" name="kontak" for="kontak" placeholder="Your Phone Number." />
           </div>
         </div>        
         <div class="row">
@@ -157,7 +157,7 @@ $show = pg_fetch_assoc($select);
             <label for="lname">Alamat</label>
           </div>
           <div class="col-75">
-            <input type="text" value="<?php echo $show['alamat_supplier'] ?>" id="alamat" name="alamat" for="alamat" placeholder="Your Phone Number." />
+            <input type="text"   required value="<?php echo $show['alamat_supplier'] ?>" id="alamat" name="alamat" for="alamat" placeholder="Your Phone Number." />
           </div>
         </div>        
         <br />

@@ -21,7 +21,11 @@ $Username=$_SESSION['Username'];
                               ORDER BY tanggal,tabel_transaksi.no_invoice ASC;
                     ");
   }
-              
+  $selectjmltransaksi = pg_query($connect, "SELECT count(no_invoice) as tot_transaksi FROM tabel_transaksi");  
+  $tottransaksi=pg_fetch_assoc($selectjmltransaksi);
+  $selectlbkotor = pg_query($connect, "SELECT sum((kuantitas_barang * harga_jual) +  tabel_transaksi.ongkir - diskon) as lbkotor FROM tabel_detail_transaksi, tabel_transaksi, tabel_pelanggan, tabel_barang");  
+  $lbkotor=pg_fetch_assoc($selectlbkotor);
+  
               
 ?>
 
@@ -70,7 +74,21 @@ $Username=$_SESSION['Username'];
   <center><p class="judul"> Record Penjualan </p></center>
   
     <div class="containerForm" style="padding: 8%; height: 100%;"> 
-       
+       <table>
+        <thead>
+<tr>
+  <th>Total transaksi</th>
+  <td><?php echo $tottransaksi['tot_transaksi'] ?></td>
+</tr>
+<tr>
+  <th>Laba Kotor</th>
+  <td><?php echo $tottransaksi['tot_transaksi'] ?></td>
+</tr>
+
+        </thead>
+        <tbody>
+        </tbody>
+       </table>
         <table id="example" class="table table-hover table-bordered" style="width:100%">
             <thead>
                 <tr>
