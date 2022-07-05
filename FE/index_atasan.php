@@ -21,9 +21,7 @@ session_start();
               
     $tottransaksi1 = pg_query($connect, "SELECT count(no_invoice) as tottransaksi FROM tabel_transaksi");  
     $tottransaksi=pg_fetch_assoc($tottransaksi1);
-    $lbkotor1 = pg_query($connect, "SELECT sum(tabel_detail_transaksi.kuantitas_barang * tabel_barang.harga_jual) as barang,
-     sum(tabel_transaksi.ongkir) as ongkir,
-      sum(tabel_detail_transaksi.diskon) as diskon FROM tabel_detail_transaksi, tabel_transaksi, tabel_pelanggan, tabel_barang");  
+    $lbkotor1 = pg_query($connect, "SELECT sum((tabel_detail_transaksi.kuantitas_barang * tabel_barang.harga_jual) + tabel_transaksi.ongkir - tabel_detail_transaksi.diskon) as total_bayar FROM tabel_detail_transaksi, tabel_transaksi, tabel_pelanggan, tabel_barang");  
     $lbkotor=pg_fetch_assoc( $lbkotor1);
 ?>
 
@@ -79,7 +77,7 @@ session_start();
           <td><?php echo $tottransaksi['tottransaksi'] ?></td>
         </tr>
         <tr><th>Laba Kotor : </th></tr>
-          <td><?php echo $lbkotor['lbkotor'] ?></td>
+          <td><?php echo $lbkotor['total_bayar'] ?></td>
       </thead>
     </table>   
     <br>
