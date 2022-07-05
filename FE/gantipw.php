@@ -129,21 +129,69 @@ header("location:/TB_PBD_B_KLP_7/index.php?msg=invaliduser");
 
   <body>
     
-    <center><p class="judul">Ubah Password User</p></center>
-    aaaa
+    <center><p class="judul">Tambah Akun User</p></center>
     <div class="containerForm" style="padding: 8%; height: 19cm">
-      <form method="post" href="aaa">
+      <form method="post" action="/tb_pbd_b_klp_7/BE/add_user.php">
+        
+        <div class="row">
+          <div class="col-25">
+            <label for="lname">Username</label>
+          </div>
+          <div class="col-75">
+            <input type="text" required id="username" name="username" for="username" placeholder="Username" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="lname">Nama</label>
+          </div>
+          <div class="col-75">
+            <input type="text"  required id="nama" name="nama" for="nama" placeholder="Nama user" />
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-25">
+            <label for="fname">No HP</label>
+          </div>
+          <div class="col-75">
+            <input type="number"  required id="nohp" min="62" max="62999999999999" value="62" name="nohp" for="nohp" placeholder="NO HP" />
+            <small class="notif" style="margin-left:2%">*Format nomor hp berawalan 62 </small>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="lname">Role</label>
+          </div>
+          <div class="col-75">
+          <select  required class="form-select" name="role" id="role" for="role" required aria-label="Default select example" >
+                  <option required disabled selected>--Pilih Role--</option>
+              <?php
+                  $select = pg_query($connect, "SELECT * FROM tabel_role_user");
+                  $i=1;
+                  while ($show = pg_fetch_assoc($select))
+                  {
+                    if($show['nama_role']!='admin'){
+              ?> 
+                  
+                  <option required value="<?php echo $show['id_role']?>"><?php echo $show['nama_role']?></option>
+              <?php
+                    }}
+              ?>
+              </select>
+          </div>
+        </div>
         <div class="row">
           <div class="col-25">
             <label for="lname">Password</label>
           </div>
           <div class="col-75">
             <input type="password"  required style=" width: 100%;
-                padding: 12px;
-                border: none;
-                border-radius: 4px;
-                resize: vertical;
-                background: #ffebf0;" minlength="5" id="password" name="password" for="password" placeholder="password" />
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    resize: vertical;
+    background: #ffebf0;" minlength="5" id="password" name="password" for="password" placeholder="password" />
           </div>
         </div> <div class="row">
           <div class="col-25">
@@ -151,15 +199,18 @@ header("location:/TB_PBD_B_KLP_7/index.php?msg=invaliduser");
           </div>
           <div class="col-75">
             <input type="password" minlength="5" required style=" width: 100%;
-                padding: 12px;
-                border: none;
-                border-radius: 4px;
-                resize: vertical;
-                background: #ffebf0;" id="password" name="password1" for="password1" placeholder="konfirmasi password" />
-            <small class="notif" style="margin-left:2%;">*Harus sama dengan password </small>
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    resize: vertical;
+    background: #ffebf0;" id="password" name="password1" for="password1" placeholder="konfirmasi password" />
+          <small class="notif" style="margin-left:2%;">*Harus sama dengan password </small>
             </div>
         </div>
-      </form> <a  href="/TB_PBD_B_KLP_7/FE/user_edit.php?usn=<?php echo $usn?>" style="text-decoration: none; hover:pointer;">
+        <div class="row">
+          <input type="submit" style=" margin-top:2cm;" value="Submit" />
+        </div>
+      </form> <a  href="/TB_PBD_B_KLP_7/FE/user_daftar.php" style="text-decoration: none; hover:pointer;">
             <button OnClick="return confirm('Yakin mau kembali? Semua perubahan yang ada belum tersimpan!');">
               Batal
             </button>

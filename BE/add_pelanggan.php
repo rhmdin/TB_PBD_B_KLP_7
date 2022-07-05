@@ -34,7 +34,7 @@ session_start();
                         document.location.href='/TB_PBD_B_KLP_7/FE/penjualan_tambah.php';
                     </script>";
                 }
-                elseif($_SESSION['addcust'] == 'penjualan')
+                elseif($_SESSION['page'] == 'penjualan')
                 {
                     echo "<script>
                         document.location.href='/TB_PBD_B_KLP_7/FE/penjualan_tambah.php';
