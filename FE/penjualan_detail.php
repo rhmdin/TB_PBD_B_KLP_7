@@ -10,8 +10,9 @@ $Username=$_SESSION['Username'];
 else{
 $noInvoice=$_GET['inv'];
 $select = pg_query($connect, "SELECT * FROM tabel_transaksi JOIN tabel_pelanggan ON tabel_transaksi.id_pelanggan = tabel_pelanggan.id_pelanggan WHERE no_invoice = $noInvoice ");
+$selectpay = pg_query($connect, "SELECT * FROM tabel_transaksi JOIN tabel_platform_pembayaran ON tabel_transaksi.id_platform = tabel_platform_pembayaran.id WHERE no_invoice = $noInvoice ");  
 $show = pg_fetch_assoc($select);
-
+$showpay = pg_fetch_assoc($selectpay);
 }
 ?>
 
@@ -77,6 +78,14 @@ $show = pg_fetch_assoc($select);
           </div>
           <div class="col-75">
             <input readonly value="<?php echo $show['ongkir']?>" type="text" for="noInvoice"  id="noInvoice" name="noInvoice" placeholder="Masukkan nomor invoice" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="lname">Platform Pembayaran</label>
+          </div>
+          <div class="col-75">
+            <input readonly value="<?php echo $showpay['id_platform']?>" type="text" for="noInvoice"  id="noInvoice" name="noInvoice" placeholder="Masukkan nomor invoice" />
           </div>
         </div>
         <div class="row">
