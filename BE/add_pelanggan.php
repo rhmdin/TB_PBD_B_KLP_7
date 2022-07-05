@@ -28,7 +28,7 @@ session_start();
             $insert =  pg_query($connect, "INSERT INTO tabel_pelanggan ( id_pelanggan, nama_pelanggan, alamat_pelanggan, kontak_pelanggan) VALUES ($id_pelanggan, '$nama', '$alamat', $kontak)");
             if($insert)
             {
-                if($_SESSION['page'] == 'penjualan')
+                if($_SESSION['add_cust'] == 'penjualan')
                 {
                     echo "<script>
                         document.location.href='/TB_PBD_B_KLP_7/FE/penjualan_tambah.php';
