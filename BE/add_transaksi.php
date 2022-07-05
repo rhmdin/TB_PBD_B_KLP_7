@@ -3,6 +3,8 @@
 session_start(); 
     include "connect.php";
     $Username=$_SESSION['Username'];
+    $select = pg_query($connect, "SELECT * FROM tabel_daftar_user WHERE username = '$Username'");  
+$akun=pg_fetch_assoc($select);
     if(empty($_POST['noInvoice']) || empty($_POST["pelanggan"]) || empty($_POST["payment"]))  
 	{
         echo "<script> 
@@ -25,7 +27,7 @@ session_start();
             $payment = pg_escape_string($connect,$_POST["payment"]);
             date_default_timezone_set('Asia/Jakarta');
             $Tanggal = date('Y-m-d h:i:s');	 
-            $kasir = 'Dm1';
+            $kasir = $akun['ket'];
             $ongkir = pg_escape_string($connect, $_POST["ongkir"]);
             $eallowed_exts= array('png','jpg','jpeg');
             $nota = $_FILES['nota']['name'];

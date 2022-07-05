@@ -27,11 +27,12 @@ session_start();
             $username = pg_escape_string($connect,$_POST["username"]);
             $nama = pg_escape_string($connect,$_POST["nama"]);
             $role = pg_escape_string($connect, $_POST["role"]);
+            $ket = pg_escape_string($connect, $_POST["ket"]);
             $nohp = pg_escape_string($connect, $_POST["nohp"]);
             $password = password_hash($pw, PASSWORD_DEFAULT);
             date_default_timezone_set('Asia/Jakarta');
             $tanggal = date('Y-m-d');	 
-            $insert =  pg_query($connect, "INSERT INTO tabel_daftar_user ( username, role_user, password, nama, no_hp) VALUES ('$username', '$role', '$password','$nama','$nohp')");
+            $insert =  pg_query($connect, "INSERT INTO tabel_daftar_user ( username, role_user, password, nama, no_hp, ket) VALUES ('$username', '$role', '$password','$nama','$nohp', '$ket')");
             if($insert)
             {
                 echo "<script>

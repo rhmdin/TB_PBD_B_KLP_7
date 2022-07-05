@@ -183,6 +183,25 @@ header("location:/TB_PBD_B_KLP_7/index.php?msg=invaliduser");
         </div>
         <div class="row">
           <div class="col-25">
+            <label for="lname">Keterangan</label>
+          </div>
+          <div class="col-75">
+          <select  required class="form-select" name="ket" id="ket" for="ket" required aria-label="Default select example" >
+                  <option required disabled selected>--Keterangan--</option>
+             
+                  
+                  <option required value="Atasan">Atasan</option>
+                  <option required value="Dm1">Kasir 1</option>
+                  <option required value="Dm2">Kasir 2</option>
+                  <option required value="Dm3">Kasir 3</option>
+                  <option required value="Dm4">Kasir 4</option>
+                  <option required value="Dm4">Kasir 5</option>
+             
+              </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
             <label for="lname">Password</label>
           </div>
           <div class="col-75">
