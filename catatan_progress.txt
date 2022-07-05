@@ -6,7 +6,7 @@ CATATAN PROGRESS TB PBD KLP 5 "DELMORA STORE"
     - session log in
 
 
-1. Admin Sistem
+1. Admin Sistem 
     a. Akun user
         - Create akun
         - Read all akun list

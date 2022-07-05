@@ -22,7 +22,7 @@ session_start();
         else{
             $hb = pg_escape_string($connect, $_POST["harga_beli"]);
             $hj = pg_escape_string($connect, $_POST["harga_jual"]);
-            if($hj<$hb){
+            if($hj<=$hb){
                 echo "<script> 
                     alert('HARGA JUAL HARUS LEBIH BESAR DARI HARGA BELI!');
                     document.location.href='/TB_PBD_B_KLP_7/FE/barang_tambah.php';
@@ -39,7 +39,7 @@ session_start();
                     if($_SESSION['page'] == 'add_brg')
                     {
                         echo "<script>
-                            document.location.href='/TB_PBD_B_KLP_7/FE/penjualan_tambah.php';
+                            document.location.href='/TB_PBD_B_KLP_7/FE/barang_daftar.php';
                         </script>";
                     }
                     elseif($_SESSION['page'] == 'read_brg')
