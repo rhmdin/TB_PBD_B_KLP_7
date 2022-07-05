@@ -159,9 +159,6 @@ header("location:/TB_PBD_B_KLP_7/index.php?msg=invaliduser");
             <small class="notif" style="margin-left:2%;">*Harus sama dengan password </small>
             </div>
         </div>
-        <div class="row">
-          <input type="submit" style=" margin-top:2cm;" value="Submit" />
-        </div>
       </form> <a  href="/TB_PBD_B_KLP_7/FE/user_edit.php?usn=<?php echo $usn?>" style="text-decoration: none; hover:pointer;">
             <button OnClick="return confirm('Yakin mau kembali? Semua perubahan yang ada belum tersimpan!');">
               Batal

@@ -22,6 +22,7 @@ session_start();
         }
         else{
             $pelanggan = pg_escape_string($connect,$_POST["pelanggan"]);
+            $payment = pg_escape_string($connect,$_POST["payment"]);
             date_default_timezone_set('Asia/Jakarta');
             $Tanggal = date('Y-m-d h:i:s');	 
             $kasir = 'Dm1';
@@ -38,7 +39,7 @@ session_start();
                 if($ukuran <= 5000000)
                 {	
                     move_uploaded_file($file_tmp, 'C:xampp\htdocs\TB_PBD_B_KLP_7\Assets\Nota\\'.$nota);
-                    $insert =  pg_query($connect, "INSERT INTO tabel_transaksi ( id_pelanggan, id_kasir, no_invoice, tanggal, nota_pembayaran, ongkir) VALUES ($pelanggan,'$kasir','$noInvoice','$Tanggal','$nota', $ongkir)");
+                    $insert =  pg_query($connect, "INSERT INTO tabel_transaksi ( id_pelanggan, id_kasir, no_invoice, tanggal, nota_pembayaran, ongkir, id_platform) VALUES ($pelanggan,'$kasir','$noInvoice','$Tanggal','$nota', '$ongkir', '$payment')");
                     if($insert)
                     {
                         echo "<script>

@@ -85,7 +85,7 @@ $showpay = pg_fetch_assoc($selectpay);
             <label for="lname">Platform Pembayaran</label>
           </div>
           <div class="col-75">
-            <input readonly value="<?php echo $showpay['id_platform']?>" type="text" for="noInvoice"  id="noInvoice" name="noInvoice" placeholder="Masukkan nomor invoice" />
+            <input readonly value="<?php echo $showpay['platform']?>" type="text" for="noInvoice"  id="noInvoice" name="noInvoice" placeholder="Masukkan nomor invoice" />
           </div>
         </div>
         <div class="row">
