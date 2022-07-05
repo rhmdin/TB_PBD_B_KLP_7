@@ -34,15 +34,13 @@ session_start();
                         document.location.href='/TB_PBD_B_KLP_7/FE/penjualan_tambah.php';
                     </script>";
                 }
-                elseif($_SESSION['page'] == 'read_pelanggan')
+                elseif($_SESSION['addcust'] == 'penjualan')
                 {
                     echo "<script>
-                        document.location.href='/TB_PBD_B_KLP_7/FE/pelanggan_tambah.php';
+                        document.location.href='/TB_PBD_B_KLP_7/FE/penjualan_tambah.php';
                     </script>";
                 } 
-          echo "<script>
-                        document.location.href='/TB_PBD_B_KLP_7/FE/pelanggan_daftar.php';
-                    </script>";
+                echo $_SESSION['page'];
             }
             else
             {

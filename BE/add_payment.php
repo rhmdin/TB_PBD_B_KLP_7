@@ -11,7 +11,7 @@ session_start();
 	}
     else{
         $id = pg_escape_string($connect,$_POST['id']);
-        $no = pg_escape_string($connect,$_POST['id']);
+        $no = pg_escape_string($connect,$_POST['no']);
         $selectid = pg_query($connect, "SELECT COUNT(id) as id FROM tabel_platform_pembayaran WHERE id = '$id'");
         $show = pg_fetch_assoc($selectid);
         if( $show ["id"] > 0 ){

@@ -148,7 +148,7 @@ else{
           </div>
           <div class="col-75">
             <input minlength="4" required type="text" id="payment" name="payment" for="payment" placeholder="Nama barang" />
-            <small class="notif" style="margin-left:2%">*Nama platform minimal terdiri atas 1 karakter </small>
+            <small class="notif" style="margin-left:2%">*Nama platform minimal terdiri atas 4 karakter </small>
             </div>
         </div>
         <div class="row">
@@ -166,7 +166,7 @@ else{
           </div>
           <div class="col-75">
             <input minlength="4" required type="text" id="nama" name="nama" for="nama" placeholder="Nama Payment Method" />
-            <small class="notif" style="margin-left:2%">*Nama minimal terdiri atas 1 karakter </small>
+            <small class="notif" style="margin-left:2%">*Nama minimal terdiri atas 4 karakter </small>
             </div>
         </div>
         <br />

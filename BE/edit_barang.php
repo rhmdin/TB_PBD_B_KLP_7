@@ -9,7 +9,7 @@ session_start();
             
             $modal = pg_escape_string($connect, $_POST["modal"]);
             $jual = pg_escape_string($connect, $_POST["jual"]);
-        if($jual<$modal){
+        if($jual<=$modal){
             echo "<script> 
                     alert('HARGA JUAL HARUS LEBIH BESAR DARI HARGA BELI!');
                     document.location.href='/TB_PBD_B_KLP_7/FE/barang_edit.php?idbrg=$idBarang';

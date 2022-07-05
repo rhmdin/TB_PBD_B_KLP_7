@@ -59,7 +59,7 @@ else{
                   }
               ?>
               </select>
-              <small class="notif" style="margin-left:2%">*Tidak ada opsi pelanggan? tambah <a onclick="<?php $_SESSION['page'] = 'add_transaksi' ?>" href="/TB_PBD_B_KLP_7/FE/pelanggan_tambah.php">di sini</a> </small>
+              <small class="notif" style="margin-left:2%">*Tidak ada opsi pelanggan? tambah <a onclick="<?php $_SESSION['addcust'] = 'penjualan' ?>" href="/TB_PBD_B_KLP_7/FE/pelanggan_tambah.php">di sini</a> </small>
             </div>
         </div><div class="row">
           <div class="col-25">
@@ -87,7 +87,7 @@ else{
             <label for="lname">Ongkir</label>
           </div>
           <div class="col-75">
-            <input type="text" id="ongkir" name="ongkir" placeholder="Jumlah barang" />
+            <input type="text" id="ongkir" required name="ongkir" placeholder="Ongkir barang" />
           </div>
         </div>
         <div class="row">

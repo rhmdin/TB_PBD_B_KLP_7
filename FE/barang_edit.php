@@ -159,7 +159,7 @@ $show = pg_fetch_assoc($select);
             <label for="lname">Harga Beli</label>
           </div>
           <div class="col-75">
-            <input type="number" autofocus value="<?php echo $show['harga_beli'] ?>" id="modal" name="modal" for="modal" placeholder="Your Phone Number." />
+            <input type="number" min=500 autofocus value="<?php echo $show['harga_beli'] ?>" id="modal" name="modal" for="modal" placeholder="Your Phone Number." />
           </div>
         </div>        
         <div class="row">
@@ -167,7 +167,7 @@ $show = pg_fetch_assoc($select);
             <label for="lname">Harga Jual</label>
           </div>
           <div class="col-75">
-            <input type="number" value="<?php echo $show['harga_jual'] ?>" id="jual" name="jual" for="jual" placeholder="Your Phone Number." />
+            <input type="number" min=500 value="<?php echo $show['harga_jual'] ?>" id="jual" name="jual" for="jual" placeholder="Your Phone Number." />
           </div>
         </div>        
         <br />

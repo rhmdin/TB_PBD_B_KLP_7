@@ -10,7 +10,7 @@ header("location:/TB_PBD_B_KLP_7/index.php?msg=invaliduser");
 }
 else{
   $noInvoice=$_GET['inv'];
-  $select = pg_query($connect, "SELECT * FROM tabel_transaksi JOIN tabel_pelanggan ON tabel_transaksi.id_pelanggan = tabel_pelanggan.id_pelanggan WHERE no_invoice = $noInvoice ");
+  $select = pg_query($connect, "SELECT * FROM tabel_transaksi JOIN tabel_pelanggan ON tabel_transaksi.id_pelanggan = tabel_pelanggan.id_pelanggan WHERE tabel_transaksi.no_invoice = '$noInvoice'");
   $show = pg_fetch_assoc($select);
 }?>
 
@@ -120,7 +120,7 @@ else{
                       </a>
                     </button>
                     <button type="button" title="Edit data" class="btn btn-warning" style="background-color: #DDEAD2; height:8mm; width:14mm">
-                      <a href="delete.php">
+                      <a href="/TB_PBD_B_KLP_7/BE/delete_transaksi_barang.php?inv=<?php echo $show ['no_invoice'] ?>&&idbrg=<?php echo $show ['id_barang']?>">
                       <i>
                         Hapus
                       </i>

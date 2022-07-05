@@ -156,14 +156,6 @@ $show = pg_fetch_assoc($select);
              
         <div class="row">
           <div class="col-25">
-            <label for="lname">Ongkir</label>
-          </div>
-          <div class="col-75">
-            <input type="number" min="0" value="<?php echo $show['ongkir'] ?>" id="ongkir" name="ongkir" for="ongkir" placeholder="Your Phone Number." />
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-25">
             <label for="lname">Diskon</label>
           </div>
           <div class="col-75">
