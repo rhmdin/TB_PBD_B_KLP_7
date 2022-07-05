@@ -18,7 +18,7 @@ session_start();
             $password = password_hash($pw, PASSWORD_DEFAULT);
             date_default_timezone_set('Asia/Jakarta');
             $tanggal = date('Y-m-d');	 
-            $insert =  pg_query($connect, "UPDATE tabel_daftar_user SET password='$password' WHERE username = $usn");
+            $insert =  pg_query($connect, "UPDATE tabel_daftar_user SET password='$password' WHERE username = '$usn'");
             if($insert)
             {
                 echo "<script>
@@ -27,10 +27,7 @@ session_start();
             }
             else
             {
-                echo "<script> 
-                        alert('GAGAL MENAMBAHKAN DATA!');
-                        document.location.href='/TB_PBD_B_KLP_7/FE/user_daftar.php';
-                    </script>"; 
+               
             } 
         }
         else{

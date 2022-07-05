@@ -3,6 +3,7 @@
 session_start(); 
 include "/xampp/htdocs/TB_PBD_B_KLP_7/BE/connect.php";
 $Username=$_SESSION['Username'];
+$usn=$_GET['usn'];
 $select = pg_query($connect, "SELECT * FROM tabel_daftar_user WHERE username = '$Username'");  
 $akun=pg_fetch_assoc($select);
 if($_SESSION['role']!="1"){
@@ -131,56 +132,9 @@ header("location:/TB_PBD_B_KLP_7/index.php?msg=invaliduser");
     
     <center><p class="judul">Tambah Akun User</p></center>
     <div class="containerForm" style="padding: 8%; height: 19cm">
-      <form method="post" action="/tb_pbd_b_klp_7/BE/add_user.php">
+      <form method="post" action="/tb_pbd_b_klp_7/BE/edit_pw.php?usn=<?php echo $usn?>">
         
-        <div class="row">
-          <div class="col-25">
-            <label for="lname">Username</label>
-          </div>
-          <div class="col-75">
-            <input type="text" required id="username" name="username" for="username" placeholder="Username" />
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-25">
-            <label for="lname">Nama</label>
-          </div>
-          <div class="col-75">
-            <input type="text"  required id="nama" name="nama" for="nama" placeholder="Nama user" />
-          </div>
-        </div>
         
-        <div class="row">
-          <div class="col-25">
-            <label for="fname">No HP</label>
-          </div>
-          <div class="col-75">
-            <input type="number"  required id="nohp" min="62" max="62999999999999" value="62" name="nohp" for="nohp" placeholder="NO HP" />
-            <small class="notif" style="margin-left:2%">*Format nomor hp berawalan 62 </small>
-            </div>
-        </div>
-        <div class="row">
-          <div class="col-25">
-            <label for="lname">Role</label>
-          </div>
-          <div class="col-75">
-          <select  required class="form-select" name="role" id="role" for="role" required aria-label="Default select example" >
-                  <option required disabled selected>--Pilih Role--</option>
-              <?php
-                  $select = pg_query($connect, "SELECT * FROM tabel_role_user");
-                  $i=1;
-                  while ($show = pg_fetch_assoc($select))
-                  {
-                    if($show['nama_role']!='admin'){
-              ?> 
-                  
-                  <option required value="<?php echo $show['id_role']?>"><?php echo $show['nama_role']?></option>
-              <?php
-                    }}
-              ?>
-              </select>
-          </div>
-        </div>
         <div class="row">
           <div class="col-25">
             <label for="lname">Password</label>
