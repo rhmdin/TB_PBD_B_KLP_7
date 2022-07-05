@@ -31,7 +31,7 @@ $akun=pg_fetch_assoc($select);
             $ongkir = pg_escape_string($connect, $_POST["ongkir"]);
             $eallowed_exts= array('png','jpg','jpeg');
             $nota = $_FILES['nota']['name'];
-            $nota = $_FILES['bukti']['name'];
+            $bukti = $_FILES['bukti']['name'];
             $x = explode('.', $nota);
             $ext = strtolower(end($x));
             $ukuran	= $_FILES['nota']['size'];
@@ -41,7 +41,8 @@ $akun=pg_fetch_assoc($select);
                 if($ukuran <= 5000000)
                 {	
                     move_uploaded_file($file_tmp, 'C:xampp\htdocs\TB_PBD_B_KLP_7\Assets\Nota\\'.$nota);
-                    $insert =  pg_query($connect, "INSERT INTO tabel_transaksi ( id_pelanggan, id_kasir, no_invoice, tanggal, nota_pembayaran, ongkir, id_platform) VALUES ($pelanggan,'$kasir','$noInvoice','$Tanggal','$nota', '$ongkir', '$payment')");
+                    move_uploaded_file($file_tmp, 'C:xampp\htdocs\TB_PBD_B_KLP_7\Assets\Transfer\\'.$bukti);
+                    $insert =  pg_query($connect, "INSERT INTO tabel_transaksi ( id_pelanggan, id_kasir, no_invoice, tanggal, nota_pembayaran, ongkir, id_platform, bukti_transfer) VALUES ($pelanggan,'$kasir','$noInvoice','$Tanggal','$nota', '$ongkir', '$payment', '$bukti')");
                     if($insert)
                     {
                         echo "<script>
