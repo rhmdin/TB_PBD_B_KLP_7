@@ -158,9 +158,8 @@ $show = pg_fetch_assoc($select);
             <label for="lname">No. HP</label>
           </div>
           <div class="col-75">
-            <input type="number" value="<?php echo $show['no_hp'] ?>" required min="62" id="nohp" name="nohp" for="nohp" placeholder="No hp user" />
-            <small class="notif" style="margin-left:2%">*Format nomor hp berawalan 62 </small>
-            </div>
+            <input type="number" required min="62" id="nohp" name="nohp" for="nohp" placeholder="No hp user" />
+          </div>
         </div>
         <div class="row">
           <div class="col-25">
@@ -187,7 +186,7 @@ $show = pg_fetch_assoc($select);
             <label for="lname">Password</label>
           </div>
           <div class="col-75">
-          <p class="notif" style="margin-top:2%;">Ubah password <a href="">di sini</a> </p>
+          <p class="notif" style="margin-top:2%;">Ubah password <a href="/TB_PBD_B_KLP_7/FE/gantipw.php?usn=<?php echo $usn ?>">di sini</a> </p>
             
           </div>
         </div>
