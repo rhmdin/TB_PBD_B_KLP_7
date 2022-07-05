@@ -134,7 +134,7 @@ $showpay = pg_fetch_assoc($selectpay);
                 <td ><?php echo $show ['kuantitas_barang'];?></td>
                 <td ><?php echo $show ['diskon'];?></td>
                 <td ><?php echo $show ['harga_beli']*$show ['kuantitas_barang'];?></td>
-                <td ><?php echo $show ['harga_jual']*$show ['kuantitas_barang'];?></td>
+                <td ><?php echo (($show ['harga_jual']*$show ['kuantitas_barang']) - $show ['diskon']);?></td>
                 
               </tr>
           <?php
