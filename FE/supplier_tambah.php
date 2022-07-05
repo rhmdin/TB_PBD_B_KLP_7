@@ -158,8 +158,8 @@ $show=pg_fetch_assoc($select);
             <label for="lname">No. HP</label>
           </div>
           <div class="col-75">
-            <input required type="number" min="6211111111" value="62" minlength="10" id="kontak_supplier" name="kontak_supplier" for="kontak_supplier" placeholder="Kontak supplier" />
-            <small class="notif" style="margin-left:2%">*No HP format 62</small>
+            <input required type="number" min="62" value="62" minlength="10" id="kontak_supplier" name="kontak_supplier" for="kontak_supplier" placeholder="Kontak supplier" />
+            <small class="notif" style="margin-left:2%">*No HP format 62 dengan minimal </small>
             </div>
         </div>
         <div class="row">
