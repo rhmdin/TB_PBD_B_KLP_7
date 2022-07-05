@@ -28,16 +28,16 @@ session_start();
             $insert =  pg_query($connect, "INSERT INTO tabel_pelanggan ( id_pelanggan, nama_pelanggan, alamat_pelanggan, kontak_pelanggan) VALUES ($id_pelanggan, '$nama', '$alamat', $kontak)");
             if($insert)
             {
-                if($_SESSION['page'] == 'add_transaksi')
+                if($_SESSION['page'] == 'penjualan')
                 {
                     echo "<script>
                         document.location.href='/TB_PBD_B_KLP_7/FE/penjualan_tambah.php';
                     </script>";
                 }
-                elseif($_SESSION['page'] == 'penjualan')
+                elseif($_SESSION['page'] == 'pelanggan')
                 {
                     echo "<script>
-                        document.location.href='/TB_PBD_B_KLP_7/FE/penjualan_tambah.php';
+                        document.location.href='/TB_PBD_B_KLP_7/FE/pelanggan_daftar.php';
                     </script>";
                 } 
                 echo $_SESSION['page'];

@@ -57,7 +57,7 @@ session_start();
     <div class="containerForm" style="padding: 8%; height: 100%;"> 
        
     <button class="addbtn">
-          <a href="pelanggan_tambah.php" onclick="<?php $_SESSION ['page'] = 'add_pelanggan' ?>">
+          <a href="pelanggan_tambah.php" onclick="<?php $_SESSION ['page'] = 'pelanggan' ?>">
             Tambah
           </a>
         </button>

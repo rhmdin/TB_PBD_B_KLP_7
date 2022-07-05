@@ -175,12 +175,12 @@ else{
           <input type="submit" value="Submit" />
         </div>
       </form>
-      <a <?php if($_SESSION ['page'] == 'add_transaksi')
+      <a <?php if($_SESSION ['page'] == 'penjualan')
       {
         ?> href="/TB_PBD_B_KLP_7/FE/penjualan_tambah.php"
          <?php
          }
-          elseif($_SESSION ['page'] == 'read_pelanggan'){?> 
+          elseif($_SESSION ['page'] == 'pelanggan'){?> 
                 href="/TB_PBD_B_KLP_7/FE/pelanggan_daftar.php"<?php
           } ?>   style="text-decoration: none; hover:pointer;">
             <button OnClick="return confirm('Yakin mau kembali? Semua perubahan yang ada belum tersimpan!');">
