@@ -1,32 +1,30 @@
 <?php
 session_start(); 
-include "/xampp/htdocs/TB_PBD_B_KLP_7/BE/connect.php";
-$Username=$_SESSION['Username'];
-  $select = pg_query($connect, "SELECT * FROM tabel_daftar_user WHERE username = '$Username'");  
-  $akun=pg_fetch_assoc($select);
-  if($_SESSION['role']!="2"){
-  header("location:/TB_PBD_B_KLP_7/index.php?msg=invaliduser");
-}
+  include "/xampp/htdocs/TB_PBD_B_KLP_7/BE/connect.php";
+  $Username=$_SESSION['Username'];
+    $select = pg_query($connect, "SELECT * FROM tabel_daftar_user WHERE username = '$Username'");  
+    $akun=pg_fetch_assoc($select);
+    if($_SESSION['role']!="2"){
+		header("location:/TB_PBD_B_KLP_7/index.php?msg=invaliduser");
+	}
   else{
-    $select = pg_query($connect, "SELECT tanggal,  tabel_transaksi.no_invoice, nama_pelanggan, id_kasir, 
-                              sum((kuantitas_barang * harga_jual) +  tabel_transaksi.ongkir - diskon) as total_bayar, 
-                              diskon, nota_pembayaran
-                              FROM tabel_detail_transaksi, tabel_transaksi, tabel_pelanggan, tabel_barang
-                              WHERE tabel_transaksi.no_invoice = tabel_detail_transaksi.no_invoice
-                              AND tabel_transaksi.id_pelanggan = tabel_pelanggan.id_pelanggan
-                              AND tabel_detail_transaksi.id_barang = tabel_barang.id_barang
-                              GROUP BY tanggal,tabel_transaksi.no_invoice, nama_pelanggan, id_kasir,
-                              nota_pembayaran,harga_jual,
-                              tabel_transaksi.ongkir,tabel_barang.id_barang, kuantitas_barang, diskon
-                              ORDER BY tanggal,tabel_transaksi.no_invoice ASC;
+    $select = pg_query($connect, "SELECT tanggal,  tabel_transaksi.no_invoice, nama_pelanggan, id_kasir, nota_pembayaran, 
+                                  sum((tabel_detail_transaksi.kuantitas_barang * tabel_barang.harga_jual) + tabel_transaksi.ongkir - tabel_detail_transaksi.diskon) as total_bayar
+                                  FROM tabel_detail_transaksi, tabel_transaksi, tabel_pelanggan, tabel_barang
+                                  WHERE tabel_transaksi.no_invoice = tabel_detail_transaksi.no_invoice
+                                  AND tabel_transaksi.id_pelanggan = tabel_pelanggan.id_pelanggan
+                                  AND tabel_detail_transaksi.id_barang = tabel_barang.id_barang
+                                  GROUP BY tabel_transaksi.no_invoice, nama_pelanggan, id_kasir
+                                  ORDER BY tanggal,tabel_transaksi.no_invoice ASC;
                     ");
   }
-  $selectjmltransaksi = pg_query($connect, "SELECT count(no_invoice) as tot_transaksi FROM tabel_transaksi");  
-  $tottransaksi=pg_fetch_assoc($selectjmltransaksi);
-  $selectlbkotor = pg_query($connect, "SELECT sum(sum(kuantitas_barang * harga_jual) +  tabel_transaksi.ongkir - diskon) as lbkotor FROM tabel_detail_transaksi, tabel_transaksi, tabel_pelanggan, tabel_barang");  
-  $lbkotor=pg_fetch_assoc($selectlbkotor);
-  
               
+    $tottransaksi1 = pg_query($connect, "SELECT count(no_invoice) as tottransaksi FROM tabel_transaksi");  
+    $tottransaksi=pg_fetch_assoc($tottransaksi1);
+    $lbkotor1 = pg_query($connect, "SELECT sum(tabel_detail_transaksi.kuantitas_barang * tabel_barang.harga_jual) as barang,
+     sum(tabel_transaksi.ongkir) as ongkir,
+      sum(tabel_detail_transaksi.diskon) as diskon FROM tabel_detail_transaksi, tabel_transaksi, tabel_pelanggan, tabel_barang");  
+    $lbkotor=pg_fetch_assoc( $lbkotor1);
 ?>
 
 <!DOCTYPE html>
@@ -74,21 +72,17 @@ $Username=$_SESSION['Username'];
   <center><p class="judul"> Record Penjualan </p></center>
   
     <div class="containerForm" style="padding: 8%; height: 100%;"> 
-       <table>
-        <thead>
-<tr>
-  <th>Total transaksi</th>
-  <td><?php echo $tottransaksi['tot_transaksi'] ?></td>
-</tr>
-<tr>
-  <th>Laba Kotor</th>
-  <td><?php echo $lbkotor['lbkotor'] ?></td>
-</tr>
-
-        </thead>
-        <tbody>
-        </tbody>
-       </table>
+    <table>
+      <thead>
+        <tr>
+          <th>Jumlah Transaksi : </th>
+          <td><?php echo $tottransaksi['tottransaksi'] ?></td>
+        </tr>
+        <tr><th>Laba Kotor : </th></tr>
+          <td><?php echo $lbkotor['lbkotor'] ?></td>
+      </thead>
+    </table>   
+    <br>
         <table id="example" class="table table-hover table-bordered" style="width:100%">
             <thead>
                 <tr>
@@ -106,7 +100,9 @@ $Username=$_SESSION['Username'];
               $i=1;
               while ($show = pg_fetch_assoc($select))
               {
+                
           ?>
+          
             <tr>
                 <td ><?php echo $i++; ?></td>
                 <td ><?php echo $show ['tanggal'];?></td>
@@ -122,6 +118,7 @@ $Username=$_SESSION['Username'];
                         </i>
                       </a>
                     </button>
+                    
                     <br>
                 </td>
               </tr>
