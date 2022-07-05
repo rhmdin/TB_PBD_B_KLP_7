@@ -1,0 +1,58 @@
+CATATAN PROGRESS TB PBD KLP 5 "DELMORA STORE"
+--HALAMAN FIX
+
+--FUNGSIONAL SUDAH
+0. Log In
+    - session log in
+
+
+1. Admin Sistem
+    a. Akun user
+        - Create akun
+        - Read all akun list
+        - Update/edit data akun
+        - Delete akun
+
+2. Kasir (CRUD)
+    a. Transaksi
+        - Create/add data transaksi
+        - Read all record transaksi
+        - Update/edit barang dalam satu transaksi
+        - Delete transaksi
+        - Read detail transaksi
+    b. Barang
+        - Create/add data barang
+        - Read all record barang
+        - Edit/update data barang
+        - Delete data barang
+    c. Supplier
+        - Create/add data supplier
+        - Read all record supplier
+        - Edit data supplier
+        - Delete data supplier
+    d. Pelanggan
+        - Create/add data pelanggan
+        - Read all record pelanggan
+        - Update/edit pelanggan dalam satu transaksi
+        - Delete data pelanggan
+
+3. Atasan
+    - Read laporan
+
+
+--YANG BELUM
+    0. Log Out
+  1. BE
+    - alert Delete
+    - log out
+    - session halaman tambah barang
+  2. FE
+    a. Barang
+        - halaman daftar barang: navbar admin dropdown
+        -         tambah barang: edit style button back, edit button submit
+    b. Transaksi
+        - halaman daftar transaksi: navbar admin dropdown, edit style button aksi
+        -         detail transaksi: edit button back, tambah bukti pembayaran
+    c. Pelanggan
+        - 
+    d. Log out

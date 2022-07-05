@@ -1,0 +1,23 @@
+
+body {
+    background-image: url('/TB_PBD_B_KLP_7/Assets/background_halaman.png');
+}
+nav{
+  height: 25%;
+}
+.container{
+
+}
+.menu{
+  background-color: rgb(255, 255, 255);
+  width: 10cm;
+  height: 47mm;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+}
+
+.namaMenu{
+  font-weight: bolder;
+  letter-spacing: 1.5px;
+}
