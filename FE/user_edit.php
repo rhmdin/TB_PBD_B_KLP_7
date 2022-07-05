@@ -158,8 +158,9 @@ $show = pg_fetch_assoc($select);
             <label for="lname">No. HP</label>
           </div>
           <div class="col-75">
-            <input type="number" required min="62" id="nohp" name="nohp" for="nohp" placeholder="No hp user" />
-          </div>
+            <input type="number" value="<?php echo $show['no_hp'] ?>" required min="62" id="nohp" name="nohp" for="nohp" placeholder="No hp user" />
+            <small class="notif" style="margin-left:2%">*Format nomor hp berawalan 62 </small>
+            </div>
         </div>
         <div class="row">
           <div class="col-25">

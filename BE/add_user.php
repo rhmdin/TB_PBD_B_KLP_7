@@ -5,7 +5,7 @@ session_start();
 
         echo "<script> 
                 alert('DATA ADA YANG KOSONG!');
-                document.location.href='/TB_PBD_B_KLP_7/FE/pelanggan_tambah.php';
+                document.location.href='/TB_PBD_B_KLP_7/FE/user_tambah.php';
             </script>"; 
     }  
     
@@ -25,11 +25,13 @@ session_start();
         $pw1 = pg_escape_string($connect, $_POST["password1"]);
         if($pw==$pw1){
             $username = pg_escape_string($connect,$_POST["username"]);
+            $nama = pg_escape_string($connect,$_POST["nama"]);
             $role = pg_escape_string($connect, $_POST["role"]);
+            $nohp = pg_escape_string($connect, $_POST["nohp"]);
             $password = password_hash($pw, PASSWORD_DEFAULT);
             date_default_timezone_set('Asia/Jakarta');
             $tanggal = date('Y-m-d');	 
-            $insert =  pg_query($connect, "INSERT INTO tabel_daftar_user ( username, role_user, password) VALUES ('$username', '$role', '$password')");
+            $insert =  pg_query($connect, "INSERT INTO tabel_daftar_user ( username, role_user, password, nama, no_hp) VALUES ('$username', '$role', '$password','$nama','$nohp')");
             if($insert)
             {
                 echo "<script>
@@ -40,7 +42,6 @@ session_start();
             {
                 echo "<script> 
                         alert('GAGAL MENAMBAHKAN DATA!');
-                        document.location.href='/TB_PBD_B_KLP_7/FE/user_daftar.php';
                     </script>"; 
             } 
         }

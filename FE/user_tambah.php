@@ -155,7 +155,7 @@ header("location:/TB_PBD_B_KLP_7/index.php?msg=invaliduser");
             <label for="fname">No HP</label>
           </div>
           <div class="col-75">
-            <input type="number"  required id="nohp" min="6211111111" max="6299999999999" name="nohp" for="nohp" placeholder="NO HP" />
+            <input type="number"  required id="nohp" min="62" max="62999999999999" value="62" name="nohp" for="nohp" placeholder="NO HP" />
             <small class="notif" style="margin-left:2%">*Format nomor hp berawalan 62 </small>
             </div>
         </div>
