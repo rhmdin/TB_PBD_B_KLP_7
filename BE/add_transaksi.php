@@ -37,7 +37,7 @@ session_start();
             if(in_array($ext, $eallowed_exts) === true){
                 if($ukuran <= 5000000)
                 {	
-                    move_uploaded_file($file_tmp, 'C:xampp\htdocs\TB_PBD_B_KLP_7\Assets\\'.$nota);
+                    move_uploaded_file($file_tmp, 'C:xampp\htdocs\TB_PBD_B_KLP_7\Assets\Nota\\'.$nota);
                     $insert =  pg_query($connect, "INSERT INTO tabel_transaksi ( id_pelanggan, id_kasir, no_invoice, tanggal, nota_pembayaran, ongkir) VALUES ($pelanggan,'$kasir','$noInvoice','$Tanggal','$nota', $ongkir)");
                     if($insert)
                     {

@@ -70,12 +70,29 @@ $show = pg_fetch_assoc($select);
           <div class="col-75">
             <input readonly value="<?php echo $show['nama_pelanggan']?>" type="text" for="noInvoice"  id="noInvoice" name="noInvoice" placeholder="Masukkan nomor invoice" />
           </div>
-        </div><div class="row">
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="lname">Ongkir</label>
+          </div>
+          <div class="col-75">
+            <input readonly value="<?php echo $show['ongkir']?>" type="text" for="noInvoice"  id="noInvoice" name="noInvoice" placeholder="Masukkan nomor invoice" />
+          </div>
+        </div>
+        <div class="row">
           <div class="col-25">
             <label for="lname">Nota</label>
           </div>
           <div class="col-75">
-            <img src="/TB_PBD_B_KLP_7/Assets/Nota/<?php echo $show ['nota_pembayaran'];?>" alt="" style="width: 6cm;heigth:8cm">
+            <img src="/TB_PBD_B_KLP_7/Assets/Nota/<?php echo $show ['nota_pembayaran'];?>" alt="Nota Transaksi" style="width: 6cm;heigth:8cm">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="lname">Bukti Transfer</label>
+          </div>
+          <div class="col-75">
+            <img src="/TB_PBD_B_KLP_7/Assets/Nota/<?php echo $show ['nota_pembayaran'];?>" alt="Bukti Pembayaran" style="width: 6cm;heigth:8cm">
           </div>
         </div>
         <br />
@@ -89,7 +106,6 @@ $show = pg_fetch_assoc($select);
                 <th>JUAL</th>
                 <th>QTY</th>
                 <th>DISKON</th>
-                <th>ONGKIR</th>
                 <th>SUB TOTAL MODAL</th>
                 <th>SUB TOTAL JUAL</th>
             </tr>
@@ -108,7 +124,6 @@ $show = pg_fetch_assoc($select);
                 <td ><?php echo $show ['harga_jual'];?></td>
                 <td ><?php echo $show ['kuantitas_barang'];?></td>
                 <td ><?php echo $show ['diskon'];?></td>
-                <td ><?php echo $show ['ongkir'];?></td>
                 <td ><?php echo $show ['harga_beli']*$show ['kuantitas_barang'];?></td>
                 <td ><?php echo $show ['harga_jual']*$show ['kuantitas_barang'];?></td>
                 
