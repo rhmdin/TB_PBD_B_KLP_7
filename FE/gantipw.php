@@ -130,8 +130,9 @@ header("location:/TB_PBD_B_KLP_7/index.php?msg=invaliduser");
   <body>
     
     <center><p class="judul">Ubah Password User</p></center>
+    aaaa
     <div class="containerForm" style="padding: 8%; height: 19cm">
-      <form method="post" href="/TB_PBD_B_KLP_7/BE/edit_pw.php?usn=<?php echo $usn ?>">
+      <form method="post" href="aaa">
         <div class="row">
           <div class="col-25">
             <label for="lname">Password</label>
